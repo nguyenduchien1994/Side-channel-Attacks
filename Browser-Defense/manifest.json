@@ -1,0 +1,17 @@
+{ "name": "Communication Port",
+  "manifest_version": 2,
+  "version": "1",
+  "permissions": [
+    "<all_urls>","webRequest","webRequestBlocking","webNavigation","notifications","tabs","activeTab","storage"
+  ],
+  "devtools_page": "devtools.html",
+  "background":{"scripts":["background.js"],"persistent": true},
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["jquery-3.2.0.min.js","login.js"]
+    }
+  ]
+}
