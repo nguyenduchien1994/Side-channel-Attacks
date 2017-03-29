@@ -37,7 +37,7 @@ chrome.webRequest.onResponseStarted.addListener(
 			
 			return {cancel: false}; 
 		},
-        {urls: ["*://www.yandex.com/*","*://yandex.com/*","*://mc.yandex.ru/*"], tabId: currentTabId},
+        {urls: ["*://www.yandex.com/*","*://yandex.com/*","*://mc.yandex.ru/*","*://suggest-maps.yandex.com/*"], tabId: currentTabId},
         ["responseHeaders"]
 	);
 	
