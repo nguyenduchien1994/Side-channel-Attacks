@@ -1,4 +1,4 @@
-{ "name": "Communication Port",
+{ "name": "Data Leakage Defense Mechanism",
   "manifest_version": 2,
   "version": "1",
   "permissions": [
