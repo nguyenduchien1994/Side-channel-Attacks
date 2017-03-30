@@ -5,7 +5,7 @@
     "<all_urls>","webRequest","webRequestBlocking","webNavigation","notifications","tabs","activeTab","storage"
   ],
   "devtools_page": "devtools.html",
-  "background":{"scripts":["background.js"],"persistent": true},
+  "background":{"scripts":["background.js","jquery-3.2.0.min.js"],"persistent": true},
   "content_scripts": [
     {
       "matches": [
