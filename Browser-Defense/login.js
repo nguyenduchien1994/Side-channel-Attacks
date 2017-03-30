@@ -15,7 +15,7 @@ $( document ).ready(function() {
 					//new_element = old_element.cloneNode(true);
 					//parent = old_element.parentNode;
 					var query;
-					var repNum = 5;
+					var repNum = Math.floor(Math.random() * 5) + 1;
 					var query_idx = Math.floor(Math.random() * repNum) + 1;
 				
 					for ( var i = 0; i <= repNum; i++) {
@@ -24,6 +24,15 @@ $( document ).ready(function() {
 							$.get(request.message,
 							function(data){
 								console.log('%c' + data,'color: #00ff00');
+								var indices = getIndicesOf("bemjson", data);
+								for ( var j = 0; j < indices.length; j++) {
+									if (j % 2 == 0) {
+										temp_str = data.substring(indices[j]);
+										second = getPosition(temp_str,'"',2)
+										third = getPosition(temp_str,'"',3)
+										console.log(temp_str.substring(second+1,third));
+									}
+								}
 							});
 						} else {
 							query = ranchar();
@@ -44,7 +53,7 @@ $( document ).ready(function() {
 				if ($(document).find("title").text().includes("Yandex.Images")) {
 					image_original = $('.input__control').val();
 					var query;
-					var repNum = 5;
+					var repNum = Math.floor(Math.random() * 5) + 1;
 					var query_idx = Math.floor(Math.random() * repNum) + 1;
 				
 					for ( var i = 0; i <= repNum; i++) {
@@ -79,3 +88,23 @@ function ranchar()
     return text;
 }	
 
+function getIndicesOf(searchStr, str, caseSensitive) {
+    var searchStrLen = searchStr.length;
+    if (searchStrLen == 0) {
+        return [];
+    }
+    var startIndex = 0, index, indices = [];
+    if (!caseSensitive) {
+        str = str.toLowerCase();
+        searchStr = searchStr.toLowerCase();
+    }
+    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+    }
+    return indices;
+}
+
+function getPosition(string, subString, index) {
+   return string.split(subString, index).join(subString).length;
+}
